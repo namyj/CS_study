@@ -4,6 +4,9 @@ alert(arr[1]); // undefined
 alert(arr); // 1,,3
 alert(arr.length); // 3, 원소를 삭제해도 해당 공간을 유지함. 
 
+
+
+
 /*
 arr.splice(index[, deleteCount, elem1, ... elemN]);
 - index: 해당하는 원소 시작 위치
