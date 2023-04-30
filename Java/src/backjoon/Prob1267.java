@@ -2,6 +2,12 @@ package backjoon;
 
 import java.util.Scanner;
 
+// Y Cost 조건
+// 0~29 > 10
+// 30~59 > 10 + 10
+// M Cost 조건
+// 0~59 > 15
+// 60~119 > 15 + 15
 public class Prob1267 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
@@ -12,8 +18,8 @@ public class Prob1267 {
 
         for (int i = 0; i < nVal ; i++) {
             call = sc.nextInt();
-            yCost += 10 * (call / 30 + (call % 30 > 0 ? 1 : 0));
-            mCost += 15 * (call / 60 + (call % 60 > 0 ? 1 : 0));
+            yCost += 10 * (call / 30 + 1);
+            mCost += 15 * (call / 60 + 1);
         }
 
         if (yCost == mCost) {
@@ -34,5 +40,6 @@ public class Prob1267 {
  * 오답 > M 45
  *
  * 접근법
- * - 경계값 입력시 동작 확인 필요
+ * - 몫 구하고, 나머지 존재 여부 확인 > 경계값 입력시 오답
+ * - 경계값 케이스 처리
  */
