@@ -1,37 +1,44 @@
-package backjoon.queue;
+package backjoon.deque;
 
-
+import java.util.*;
 import java.io.*;
 
-public class Prob10845 {
+public class Prob10866 {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         int n = Integer.parseInt(br.readLine());
-        int[] arr = new int[n];
-        int head = 0;
-        int tail = 0;
+        int[] arr = new int[n+1];
+        int head = n / 2;
+        int tail = n / 2;
 
-        for (int i=0; i < n; i++) {
+        for (int i = 0; i < n ; i++) {
             String[] command = br.readLine().split(" ");
 
             switch (command[0]) {
-                case "push":
+                case "push_front":
+                    arr[--head] = Integer.parseInt(command[1]);
+                    break;
+                case "push_back":
                     arr[tail++] = Integer.parseInt(command[1]);
                     break;
-                case "pop":
+                case "pop_front":
                     if (tail - head > 0) {
                         bw.write(String.valueOf(arr[head++]) + "\n");
                     } else {
                         bw.write("-1\n");
                     }
                     break;
-                case "size":
+                case "pop_back":
                     if (tail - head > 0) {
-                        bw.write(String.valueOf(tail - head) + "\n");
+                        bw.write(String.valueOf(arr[--tail]) + "\n");
                     } else {
-                        bw.write("0\n");
+                        bw.write("-1\n");
                     }
+                    break;
+                case "size":
+                    int cnt = tail - head > 0 ? tail - head : 0;
+                    bw.write(String.valueOf(cnt) + "\n");
                     break;
                 case "empty":
                     if (tail - head > 0) {
@@ -47,7 +54,7 @@ public class Prob10845 {
                         bw.write("-1\n");
                     }
                     break;
-                default:
+                default: // back
                     if (tail - head > 0) {
                         bw.write(String.valueOf(arr[tail - 1]) + "\n");
                     } else {
@@ -56,8 +63,10 @@ public class Prob10845 {
             }
         }
 
+
         bw.flush();
         br.close();
         bw.close();
+
     }
 }
