@@ -15,7 +15,7 @@ import java.util.StringTokenizer;
  * - CPU의 평균 연산량을 보수적으로 추정하면 1초에 약 1억번이다,
  *  이 문제의 제한시간이 0.5초이므로, 10억 >> 5000만이 되어서 시간초과가 납니다.
  */
-public class Prob10724 {
+public class Prob1074 {
     public static BufferedReader br;
     public static BufferedWriter bw;
     public static int n;
@@ -25,8 +25,8 @@ public class Prob10724 {
 
     public static int cnt = -1; // 결과
 
+    // 방법 1 > 시간초과
     // x, y : 시작점, n : 원소 개수 (2의 몇 제곱인지)
-    // 시간 초과
     public static void visitZ(int x, int y, int n) throws IOException {
         int nx; int ny;
 
@@ -50,6 +50,7 @@ public class Prob10724 {
         visitZ(x + mid, y + mid, n-1);
     }
 
+    // 방법2
     // 전체 탐색하면 시간 초과 > r 과 c를 포함하는 것만 방문
     // 이전 사분면들의 칸 수를 cnt에 더하고 나서 r,c를 포함한 사분면 방문
     public static void solution(int x, int y, int n) throws IOException {
@@ -92,6 +93,18 @@ public class Prob10724 {
             visitZ(x + mid, y + mid, n-1);
         }
     }
+
+    // 바킹독 솔루션
+    public static int func(int r, int c, int n) {
+        if (n==0) return 0;
+
+        int mid = (n-1)/2;
+        if (r < mid && c < mid) return func(r, c, n-1); // 1사분면
+        if (r < mid && c >= mid) return mid*mid + func(r, c-mid, n-1);
+        if (r >= mid && c < mid) return 2*mid*mid + func(r-mid, c, n-1);
+        return 3*mid*mid + func(r-mid, c-mid, n-1);
+    }
+
     public static void main(String[] args) throws IOException {
         br = new BufferedReader(new InputStreamReader(System.in));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
