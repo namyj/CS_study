@@ -26,7 +26,6 @@ public class Prob1182 {
      * - 방법2)
      * - 시작점을  0 ~ n-1 변경
      * - 앞에서 부터 숫자를 더해감  > start 이전에 있는 숫자는 검색할 필요 없음 (이미 더해봤던 숫자이기 때문)
-     *
      */
     
     // 백트래킹 시작 함수
@@ -56,6 +55,7 @@ public class Prob1182 {
             }
         }
     }
+
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
