@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 
 /*
-> 오답 왜??
 1. 시작점 찾기
 2. 시작점부터 인접한 블록(뿌요) 탐색 - bfs
 3. 인접한 블록 개수가 4 개 이상이면 > 연쇄 / 4 개 미만이면 > 이어서 시작점 찾기
@@ -13,6 +12,9 @@ import java.util.*;
     - 블록이 삭제된 빈 공간에 위에 있는 블록들 밀기 (아래로 밀기)
 5. 연쇄가 발생한 경우, 처음부터 다시 시작점 찾기
 
+> 오답
+- 문제 조건 잘 확인하자!!!
+- 터질 수 있는 뿌요가 여러 그룹이 있다면 동시에 터져야 하고 여러 그룹이 터지더라도 한번의 연쇄가 추가된다.
 */
 public class Prob1159 {
     static int answer = 0; // 연쇄 횟수
@@ -54,7 +56,6 @@ public class Prob1159 {
                         bfs(i, j);
 
                         if(list.size() >= 4) { // 연쇄 발생
-                            answer++;
                             remove();
                             flag = true;
                         }
@@ -65,6 +66,7 @@ public class Prob1159 {
             // 모든 맵을 돌아도 연쇄가 발생하지 않은 경우 > 종료
             // 연쇄가 발생한 경우 > 다시 시작점 찾기
             if (flag) {
+                answer++;
                 push();
             }
         }
