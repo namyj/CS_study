@@ -3,7 +3,7 @@ package backjoon.simulation;
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class Prob15686 {
     static int n;
     static int m;
     static int answer;

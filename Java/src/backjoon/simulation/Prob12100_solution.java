@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
  * 참고 : https://jellyinghead.tistory.com/53
  */
 
-public class Main {
+public class Prob12100_solution {
 
     static int n, answer, map[][];
 
@@ -174,4 +174,5 @@ public class Main {
             for(int j = 0; j < n; j++)
                 answer = Math.max(answer, map[i][j]);
     }
+
 }
