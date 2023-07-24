@@ -1,7 +1,7 @@
 package backjoon.binarySearch;
 
 import java.io.*;
-import java.ut~il.*;
+import java.util.*;
 
 /*
 풀이 1
